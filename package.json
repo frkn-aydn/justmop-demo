@@ -1,19 +1,13 @@
 {
-  "name": "nodder",
+  "name": "jutmop",
   "version": "1.0.0",
-  "description": "Nodder is a free and open-source content management system (CMS) based on Nodejs and MySQL",
+  "description": "Justmop için hazırladığım demodur.",
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "build": "node build/build.js"
   },
-  "keywords": [
-    "nodder",
-    "content management",
-    "CMS",
-    "nodejs",
-    "mysql"
-  ],
+  "keywords": [],
   "author": "Muhammed Furkan Aydın <furkanaydin@turkdeveloper.com>",
   "license": "GNU GPLv3",
   "dependencies": {
