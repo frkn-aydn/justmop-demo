@@ -153,14 +153,11 @@ webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 }))
 
 // copy custom static assets
-if (fs.readdirSync(path.resolve(__dirname, '../client'))["static"]) {
-	webpackConfig.plugins.push(new CopyWebpackPlugin([{
-		from: path.resolve(__dirname, '../client/static'),
-		to: path.resolve(__dirname, "../server/public"),
-		ignore: ['.*']
-	}]))
-}
-
+webpackConfig.plugins.push(new CopyWebpackPlugin([{
+	from: path.resolve(__dirname, '../client/static'),
+	to: path.resolve(__dirname, "../server/public"),
+	ignore: ['.*']
+}]))
 
 const targetFolder = path.resolve(__dirname, "../client/");
 utils.getFiles(targetFolder).forEach(file => {
