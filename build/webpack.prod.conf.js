@@ -16,6 +16,11 @@ const utils = require("./utils");
 // Getting node evn.
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : '"production"';
 
+
+const extractLess = new ExtractTextPlugin({
+    filename: "css/[name].[contenthash].css"
+});
+
 // Generating webpack settings...
 const webpackConfig = {
 	entry: {},
@@ -33,7 +38,8 @@ const webpackConfig = {
 			root: path.resolve(__dirname, "../server"),
 			dry: false,
 			verbose: true
-		})
+		}),
+		extractLess
 	],
 	module: {
 		rules: [{
@@ -59,6 +65,18 @@ const webpackConfig = {
 				use: ExtractTextPlugin.extract({
 					fallback: "style-loader",
 					use: "css-loader"
+				})
+			},
+			{
+				test: /\.less$/,
+				use: extractLess.extract({
+					use: [{
+						loader: "css-loader"
+					}, {
+						loader: "less-loader"
+					}],
+					// use style-loader in development
+					fallback: "style-loader"
 				})
 			},
 			{
