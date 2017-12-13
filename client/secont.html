@@ -48,10 +48,10 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <h3>How often do you need your cleaner?</h3>
-                                <div class="btn-group">
-                                    <div class="btn active">ONE-OF</div>
-                                    <div class="btn">WEEKLY</div>
-                                    <div class="btn">BI-WEEKLY</div>
+                                <div class="btn-group" id="schedule">
+                                    <div class="btn active" data-type="one-of">ONE-OF</div>
+                                    <div class="btn" data-type="weekly">WEEKLY</div>
+                                    <div class="btn" data-type="bi-weekly">BI-WEEKLY</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="btn-group">
-                                    <button class="btn btn-success"> Next ></button>
+                                    <button class="btn btn-success slider-next-button" data-slide="0"> Next ></button>
                                 </div>
                             </div>
                         </div>
@@ -105,27 +105,89 @@
                     <!-- FORM 2 -->
                     <div class="panel wizard">
                         <div class="panel-header">
-                            <h2>Choose Your Clean</h2>
+                            <h2>Date & Time</h2>
                         </div>
                         <div class="panel-body">
+                            <!-- CALENDAR -->
                             <div class="form-group">
-                                <h3>Hasdasdasdasdasdaser?</h3>
+                                <h3>When would you like your cleaning?</h3>
+                                <div class="calendar-page">
+                                    <div class="calendar-controller">
+                                        <svg viewBox="0 0 24 24" id="last-month">
+                                            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+                                        </svg>
+                                        <span class="title"></span>
+                                        <svg viewBox="0 0 24 24" id="next-month">
+                                            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="calendar-month">
+                                        <ol class="day-names">
+                                        </ol>
+                                        <ol class="days">
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /CALENDAR -->
+                            <!-- Hour Selector -->
+                            <div class="form-group">
+                                <h3>What time would you like us to start?</h3>
                                 <div class="btn-group">
-                                    <div class="btn active">ONE-OF</div>
-                                    <div class="btn">WEEKLY</div>
-                                    <div class="btn">BI-WEEKLY</div>
+                                    <div class="btn small-part active">08:00</div>
+                                    <div class="btn small-part">08:30</div>
+                                    <div class="btn small-part">09:00</div>
+                                    <div class="btn small-part">09:30</div>
+                                    <div class="btn small-part">10:00</div>
+                                    <div class="btn small-part">13:00</div>
+                                    <div class="btn small-part">13:30</div>
+                                    <div class="btn small-part">14:00</div>
+                                    <div class="btn small-part">14:30</div>
+                                    <div class="btn small-part">15:00</div>
+                                </div>
+                            </div>
+                            <!-- /Hour Selector -->
+                            <div class="form-group">
+                                <div class="btn-group">
+                                    <button class="btn btn-success slider-next-button" data-slide="1"> Next ></button>
                                 </div>
                             </div>
                         </div>
+                        <!-- /FORM 2 -->
                     </div>
-                    <!-- /FORM 2 -->
+                    <!-- FORM SUCCESS -->
+                    <div class="panel wizard">
+                        <div class="panel-header">
+                            <h2>Fisnished</h2>
+                        </div>
+                        <div class="panel-body">
+                            Success
+                        </div>
+                    </div>
+                    <!-- /FORM SUCCESS -->
                 </div>
                 <div class="panel quarter">
                     <div class="panel-header">
                         <h2>Booking Summary</h2>
                     </div>
                     <div class="panel-body">
-                        sonuclar
+                        <h3>Payment</h3>
+                        <div class="result-set">
+                            <span>Duration:</span>
+                            <span>4 Hours</span>
+                        </div>
+                        <div class="result-set">
+                            <span>No of Cleaners:</span>
+                            <span>1</span>
+                        </div>
+                        <div class="result-set">
+                            <span>Cleaning Materials:</span>
+                            <span>No</span>
+                        </div>
+                        <div class="result-set">
+                            <span>No Hourly Fee:</span>
+                            <span>AED 35</span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,2 +1,42 @@
 //main./:main.less
 
+.btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    transition: all 0.3s;
+    padding: 9px 10px;
+    font-weight: 700;
+    font-size: 16px;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    &.btn-success{
+        background: #61c400;
+        border: 1px solid #61c400;
+        color: #fff;
+        transition: all 0.3s;
+        &:hover{
+            background-color: #fff;
+            color: #55caff;
+        }
+    }
+    &:hover{
+        background-color: #55caff;
+        color: #fff;
+    }
+    &.active{
+        background-color: #55caff;
+        color: #fff;
+    }
+    &.small-part{
+        flex-wrap: wrap;
+        min-width: 20%;;
+        font-weight: 300;
+    }
+}

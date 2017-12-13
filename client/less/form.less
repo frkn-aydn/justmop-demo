@@ -1,11 +1,10 @@
 //main:./main.less
 
 .wizard-form{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative;
-    height: auto;
+    float: left;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
 }
 .form-group{
     margin-bottom: 30px;
@@ -24,40 +23,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap : wrap;
-    .btn{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-grow: 1;
-        border: 1px solid #ddd;
-        margin-top: 5px;
-        transition: all 0.3s;
-        padding: 9px 10px;
-        font-weight: 700;
-        font-size: 16px;
-        user-select: none;
-        cursor: pointer;
-        &.btn-success{
-            background: #61c400;
-            border: 1px solid #61c400;
-            color: #fff;
-            transition: all 0.3s;
-            &:hover{
-                background-color: #fff;
-                color: #55caff;
-            }
-        }
-        &:hover{
-            background-color: #55caff;
-            color: #fff;
-        }
-        &.active{
-            background-color: #55caff;
-            color: #fff;
-        }
-    }
     select{
         flex-grow: 1;
         padding: 6px 12px;

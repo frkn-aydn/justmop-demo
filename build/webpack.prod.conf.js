@@ -30,6 +30,7 @@ const webpackConfig = {
 		publicPath: '/',
 		chunkFilename: 'js/[id].[chunkhash].js'
 	},
+	watch: true,
 	plugins: [
 		new CleanWebpackPlugin([
 			"public",
