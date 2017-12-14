@@ -41,7 +41,8 @@ const webpackConfig = {
 			dry: false,
 			verbose: true
 		}),
-		extractLess
+		extractLess,
+		new StyleExtHtmlWebpackPlugin()
 	],
 	module: {
 		rules: [{
@@ -214,7 +215,5 @@ webpackConfig.plugins.push(new OfflinePlugin({
 		events: true
 	}
 }))
-
-webpackConfig.plugins.push(new StyleExtHtmlWebpackPlugin())
 
 module.exports = webpackConfig

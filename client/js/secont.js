@@ -1,6 +1,9 @@
 // Service Worker installing...
 require('offline-plugin/runtime').install();
 
+// Importing style...
+import "../less/main.less";
+
 // Dependencies
 import Calendar from "./SecontPage/calendar";
 import Schedule from "./SecontPage/schedule";
@@ -48,7 +51,3 @@ document.addEventListener("DOMContentLoaded", _=>{
     MakeCalendarGreatAgain()
     MakeScheduleGreatAgain()
 })
-
-// Importing style...
-import "../less/main.less";import schedule from './SecontPage/schedule';
- 
