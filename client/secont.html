@@ -57,8 +57,8 @@
                             <div class="form-group">
                                 <h3>How long do you need your cleaner to stay?</h3>
                                 <div class="btn-group">
-                                    <select>
-                                        <option value="1">1 Hour</option>
+                                    <select id="stay-time">
+                                        <option value="1" selected="selected">1 Hour</option>
                                         <option value="2">2 Hours</option>
                                         <option value="3">3 Hours</option>
                                         <option value="4">4 Hours</option>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <h3>How many cleaners do you need?</h3>
                                 <div class="btn-group">
-                                    <select>
+                                    <select id="cleaners">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -171,22 +171,24 @@
                         <h2>Booking Summary</h2>
                     </div>
                     <div class="panel-body">
-                        <h3>Payment</h3>
-                        <div class="result-set">
-                            <span>Duration:</span>
-                            <span>4 Hours</span>
-                        </div>
-                        <div class="result-set">
-                            <span>No of Cleaners:</span>
-                            <span>1</span>
-                        </div>
-                        <div class="result-set">
-                            <span>Cleaning Materials:</span>
-                            <span>No</span>
-                        </div>
-                        <div class="result-set">
-                            <span>No Hourly Fee:</span>
-                            <span>AED 35</span>
+                        <div class="payment-info">
+                            <h3>Payment</h3>
+                            <div class="result-set">
+                                <span>Duration:</span>
+                                <span id="duration-time-result">1 Hours</span>
+                            </div>
+                            <div class="result-set">
+                                <span>No of Cleaners:</span>
+                                <span>1</span>
+                            </div>
+                            <div class="result-set">
+                                <span>Cleaning Materials:</span>
+                                <span>No</span>
+                            </div>
+                            <div class="result-set">
+                                <span>No Hourly Fee:</span>
+                                <span>AED 35</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -64,17 +64,22 @@ export default class calendar {
 
             li.innerHTML += `<div class="date">${currentDate.getDate()}</div>`
 
-            li.addEventListener("click", e=>{
-                e.currentTarget.parentNode.querySelectorAll("li").forEach(el=>{
-                    el.classList.remove("active");
-                    if(e.currentTarget == el) el.classList.add("active");
-                    var d = new Date();
-                    d.setDate(e.currentTarget.dataset.date);
-                    d.setMonth(e.currentTarget.dataset.month);
-                    d.setFullYear(e.currentTarget.dataset.year);
-                    that.date = d;
+            if(iter < 1 || previousDay > +currentDate) {
+                li.style.userSelect = "none";
+                li.style.cursor = "default"
+            }else{
+                li.addEventListener("click", e=>{
+                    e.currentTarget.parentNode.querySelectorAll("li").forEach(el=>{
+                        el.classList.remove("active");
+                        if(e.currentTarget == el) el.classList.add("active");
+                        var d = new Date();
+                        d.setDate(e.currentTarget.dataset.date);
+                        d.setMonth(e.currentTarget.dataset.month);
+                        d.setFullYear(e.currentTarget.dataset.year);
+                        that.date = d;
+                    })
                 })
-            })
+            }
             this.daysArea.appendChild(li)
             if (+controlerDate < +currentDate && currentDate.getDay() === 1) {
                 ready = false

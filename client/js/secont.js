@@ -8,46 +8,61 @@ import "../less/main.less";
 import Calendar from "./SecontPage/calendar";
 import Schedule from "./SecontPage/schedule";
 
-function sliderNextAnimate(button){
-    const index = parseInt(button.getAttribute( "data-slide" ), 10 ) + 1;
-    const wizard = document.querySelector( ".wizard:nth-child(" + index + ")" );
-    const nextwizard = document.querySelector( ".wizard:nth-child(" + (index + 1) + ")" );
-    wizard.style.left = "-" + 200 + "%";   
+(_ => {
+    class Main {
+        constructor() {
+            // Generating Calendar...
+            const date = new Date();
+            const controllerArea = document.querySelector(".calendar-controller");
+            const dayNamesArea = document.querySelector(".day-names");
+            const daysArea = document.querySelector(".days");
+            this.calendar = new Calendar(date, controllerArea, dayNamesArea, daysArea)
+            
+            // Generating Schedule...
+            const scheduleButtonsArea = document.getElementById("schedule");
+            this.schedule = new Schedule(scheduleButtonsArea);
+            
+            //Stay time...
+            const DurationInput = document.getElementById("stay-time");
+            this.duration = 1
+            DurationInput.addEventListener("change", this.updateDurationTime)
+
+            // Cleaner units
+            const CleanersInput = document.getElementById("cleaners");
+            CleanersInput.addEventListener("change", updateCleaners);
+        }
+        init() {
+            this.calendar.init()
+            this.schedule.init();
+        }
+        updateDurationTime(event){
+            this.duration = event.currentTarget.value;
+            document.getElementById("duration-time-result").innerHTML = `${this.duration} ${this.duration == 1 ? "Hour" : "Hours"}`
+        }
+        updateCleaners(event){
+            
+        }
+    }
+
+    window.mainFunction = new Main();
+    window.mainFunction.init()
+})()
+
+// Slider
+function sliderNextAnimate(button) {
+    const index = parseInt(button.getAttribute("data-slide"), 10) + 1;
+    const wizard = document.querySelector(".wizard:nth-child(" + index + ")");
+    const nextwizard = document.querySelector(".wizard:nth-child(" + (index + 1) + ")");
+    wizard.style.left = "-" + 200 + "%";
     wizard.style.position = "absolute"
     nextwizard.style.left = "100%";
     nextwizard.classList.add("active");
-    setTimeout(_=>{
+    setTimeout(_ => {
         nextwizard.style.left = "0";
     }, 1)
 }
-
-document.querySelectorAll(".slider-next-button").forEach(el=>{
-    el.addEventListener("click", e=>{
+document.querySelectorAll(".slider-next-button").forEach(el => {
+    el.addEventListener("click", e => {
         sliderNextAnimate(e.currentTarget)
     })
-})
-
-function MakeCalendarGreatAgain(){
-    const date = new Date();
-    const controllerArea = document.querySelector(".calendar-controller");
-    const dayNamesArea = document.querySelector(".day-names");
-    const daysArea = document.querySelector(".days");
-    
-    // [TODO] Window nesnesinden cikartilip ana bir class icinde erisim sagla...
-    window.CalendarUtil = new Calendar(date, controllerArea, dayNamesArea, daysArea)
-    window.CalendarUtil.init()
-}
-
-function MakeScheduleGreatAgain(){
-    const buttonsArea = document.getElementById("schedule");
-    window.Schedule = new Schedule(buttonsArea);
-    window.Schedule.init()
-    window.Schedule.value.addEventListener("change", e=>{
-        console.log(`asd`)
-    })
-}
-
-document.addEventListener("DOMContentLoaded", _=>{
-    MakeCalendarGreatAgain()
-    MakeScheduleGreatAgain()
 })
