@@ -40,6 +40,7 @@ export default class calendar {
         Language.DAY_NAMES.forEach(day => {
             this.dayNamesArea.innerHTML += `<li>${day}</li>`
         })
+        
     }
     insertDays() {
         const that = this;
