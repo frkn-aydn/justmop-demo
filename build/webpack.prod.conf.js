@@ -8,6 +8,8 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+
 const path = require("path");
 const fs = require("fs")
 //  Useful functions
@@ -175,7 +177,8 @@ utils.getFiles(targetFolder).forEach(file => {
 				removeComments: true,
 				collapseWhitespace: true
 			},
-			chunks: [fileInfo.name]
+			chunks: [fileInfo.name],
+			inlineSource: '.(css)$'
 		}))
 
 		// extract css into its own file
@@ -186,6 +189,8 @@ utils.getFiles(targetFolder).forEach(file => {
 		}))
 	}
 })
+
+webpackConfig.plugins.push(new HtmlWebpackInlineSourcePlugin())
 
 // Compress extracted CSS. We are using this plugin so that possible
 // duplicated CSS from different components can be deduped.
