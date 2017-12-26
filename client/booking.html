@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <h3>How long do you need your cleaner to stay?</h3>
                                 <div class="btn-group">
-                                    <select id="stay-time">
+                                    <select id="clean-time">
                                         <option value="1" selected="selected">1 Hour</option>
                                         <option value="2">2 Hours</option>
                                         <option value="3">3 Hours</option>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <h3>Do you have any specific cleaning instructions?</h3>
                                 <div class="btn-group">
-                                    <input type="text" placeholder="Specific requirements (i.e. ironing)">
+                                    <input type="text" placeholder="Specific requirements (i.e. ironing)" id="cleaning-instructions">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -183,22 +183,10 @@
                     </div>
                     <div class="panel-body">
                         <div class="payment-info">
-                            <h3>Payment</h3>
+                            <h3>Info</h3>
                             <div class="result-set">
-                                <span>Duration:</span>
-                                <span id="duration-time-result">1 Hours</span>
-                            </div>
-                            <div class="result-set">
-                                <span>No of Cleaners:</span>
-                                <span>1</span>
-                            </div>
-                            <div class="result-set">
-                                <span>Cleaning Materials:</span>
-                                <span>No</span>
-                            </div>
-                            <div class="result-set">
-                                <span>No Hourly Fee:</span>
-                                <span>AED 35</span>
+                                <span>Selected Date:</span>
+                                <span id="selected-date"></span>
                             </div>
                         </div>
                     </div>

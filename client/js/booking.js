@@ -10,47 +10,58 @@ import Schedule from "./BookingPage/schedule";
 import Slider from "./BookingPage/slider"
 import CleaningMaterials from "./BookingPage/cleaningMaterials";
 
-export class Main {
-    constructor() {
-        const that = this;
-        // Generating Calendar...
-        const date = new Date();
-        const controllerArea = document.querySelector(".calendar-controller");
-        const dayNamesArea = document.querySelector(".day-names");
-        const daysArea = document.querySelector(".days");
-        this.calendar = new Calendar(date, controllerArea, dayNamesArea, daysArea)
+const date = new Date();
+const controllerArea = document.querySelector(".calendar-controller");
+const dayNamesArea = document.querySelector(".day-names");
+const daysArea = document.querySelector(".days");
+const calendar = new Calendar(date, controllerArea, dayNamesArea, daysArea)
+calendar.init(document.getElementById("selected-date"))
 
-        // Generating Schedule...
-        const scheduleButtonsArea = document.getElementById("schedule");
-        this.schedule = new Schedule(scheduleButtonsArea);
+const scheduleButtonsArea = document.getElementById("schedule");
+const schedule = new Schedule(scheduleButtonsArea)
+schedule.init()
 
-        //Stay time...
-        const DurationInput = document.getElementById("stay-time");
-        this.duration = DurationInput.value
-        DurationInput.addEventListener("change", this.updateDurationTime)
+const cleanTimeInput = document.getElementById("clean-time");
+let cleanTime = 1
+cleanTimeInput.addEventListener("change", cleanTimeUpdate)
 
-        // Cleaner units
-        const CleanersInput = document.getElementById("cleaners");
-        this.cleaners = CleanersInput.value
-        CleanersInput.addEventListener("change", this.updateCleaners);
-
-        const clieaningMaterialsButtonsArea = document.getElementById("cleaning-materials");
-        this.cleaningMaterials = new CleaningMaterials(clieaningMaterialsButtonsArea);
-        
-    }
-    init() {
-        this.calendar.init();
-        this.schedule.init();
-        this.cleaningMaterials.init();
-    }
-    updateDurationTime(event) {
-        this.duration = event.currentTarget.value;
-        //document.getElementById("duration-time-result").innerHTML = `${this.duration} ${this.duration == 1 ? "Hour" : "Hours"}`
-    }
-    updateCleaners(event) {
-        this.cleaners = event.currentTarget.value;
-        console.log(this.cleaners)
-    }
+function cleanTimeUpdate(e){
+    cleanTime = e.currentTarget.value;    
+    showResults()
 }
 
-new Main().init()
+const CleanersInput = document.getElementById("cleaners");
+let cleaners = 1;
+CleanersInput.addEventListener("change", updateCleaners);
+
+function updateCleaners(e) {
+    cleaners = e.currentTarget.value;
+    showResults()
+}
+
+const CleaningMaterialsArea = document.getElementById("cleaning-materials")
+const cleaningMaterials = new CleaningMaterials(CleaningMaterialsArea)
+cleaningMaterials.init()
+
+const cleaningInstructionsButton = document.getElementById("cleaning-instructions")
+let cleaningInstructions = ""
+cleaningInstructionsButton.addEventListener("change", cleaningInstructionsUpdate)
+
+function cleaningInstructionsUpdate(e){
+    cleaningInstructions = e.currentTarget.value;
+    showResults()
+}
+
+function showResults(){
+    console.log("Secilen tarih, ", calendar.date)
+    console.log("How often sorusunun cevabı, ", schedule.value);
+    console.log("Clean time, ", cleanTime)
+    console.log("cleaners, ", cleaners)
+    console.log("cleanıng materials, ", cleaningMaterials.value)
+    console.log("cleanıng Instructions, ", cleaningInstructions)
+}
+
+
+import $ from "jquery";
+import bootstrap from "bootstrap";
+import formValidate from "./vendors/form-validate";

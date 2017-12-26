@@ -8,11 +8,13 @@ export default class calendar {
         this.daysArea = daysArea;
         this.crated = false
     }
-    init() {
+    init(updateArea) {
         this.setUpControllers()
         this.giveDayNames()
         this.insertDays()
         this.setTitle()
+        this.updateArea = updateArea;
+        this.updateInfo()
     }
     setTitle(){
         const month = Language.MONTH_NAMES[(this.date.getMonth())]
@@ -42,6 +44,16 @@ export default class calendar {
         })
         
     }
+    updateInfo(){
+        if(this.updateArea){
+            this.updateArea.innerHTML = ``
+            const date = new Date(this.date);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            this.updateArea.innerHTML = `${day < 10 ? "0" + day : day}.${month<10 ? "0" + month : month}.${year}`
+        }
+    }
     insertDays() {
         const that = this;
         let controlerDate = new Date(this.date.getFullYear(), (this.date.getMonth() + 1), 0)
@@ -58,7 +70,7 @@ export default class calendar {
             currentDate = new Date(this.date.getFullYear(), this.date.getMonth(), ++iter)
             const li = document.createElement("li");
             if(iter < 1 || previousDay > +currentDate) li.classList.add("outside");
-            if(now.getDate() == currentDate.getDate()) li.classList.add("active")
+            if(now.getDate() == currentDate.getDate() && now.getMonth() == currentDate.getMonth()) li.classList.add("active")
             li.setAttribute("data-date", `${currentDate.getDate()}`)
             li.setAttribute("data-month", `${currentDate.getMonth()}`)
             li.setAttribute("data-year", `${currentDate.getFullYear()}`)
@@ -78,6 +90,7 @@ export default class calendar {
                         d.setMonth(e.currentTarget.dataset.month);
                         d.setFullYear(e.currentTarget.dataset.year);
                         that.date = d;
+                        that.updateInfo()
                     })
                 })
             }

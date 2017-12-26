@@ -130,8 +130,6 @@ webpackConfig.plugins.push(new UglifyJsPlugin({
 	parallel: true
 }))
 
-/**
- * // split vendor js into its own file
 webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 	name: 'vendor',
 	minChunks: function (module, count) {
@@ -145,7 +143,6 @@ webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 		)
 	}
 }))
- */
 
 
 // extract webpack runtime and module manifest to its own file in order to
