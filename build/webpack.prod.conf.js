@@ -53,7 +53,7 @@ const webpackConfig = {
 					options: {
 						babelrc: true,
 						comments: false,
-						minified: true
+						minified: false
 					}
 				}
 			},
@@ -123,7 +123,7 @@ webpackConfig.plugins.push(new webpack.DefinePlugin({
 webpackConfig.plugins.push(new UglifyJsPlugin({
 	uglifyOptions: {
 		compress: {
-			warnings: false
+			warnings: true
 		}
 	},
 	sourceMap: true,
@@ -171,7 +171,7 @@ utils.getFiles(targetFolder).forEach(file => {
 		}
 		webpackConfig.plugins.push(new HtmlWebpackPlugin({
 			template: file,
-			filename: path.resolve(__dirname, "../server/views/" + fileInfo.name + ".hbs"),
+			filename: path.resolve(__dirname, "../server/views/" + fileInfo.name + ".html"),
 			root: path.resolve(__dirname, '../server/views'),
 			minify: {
 				removeComments: true,
